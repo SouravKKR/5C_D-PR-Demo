@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Indoor Navigation System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero" id="home">
+    <nav class="nav">
+      <div class="logo">SIN Campus</div>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#demo">Live Demo</a></li>
+        <li><a href="#admin">Admin</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h1>Smart Indoor Navigation System</h1>
+      <p>Google Maps-style indoor navigation across campus buildings using Wi-Fi zone localization.</p>
+      <a href="#demo" class="btn">Try Interactive Route Demo</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview" class="section">
+      <h2>Overview</h2>
+      <p>
+        Navigate classrooms, labs, cabins, and offices inside multi-floor buildings using existing Wi-Fi routers.
+        This platform reduces confusion, improves accessibility, and offers emergency routing support.
+      </p>
+      <div class="cards">
+        <article class="card"><h3>Students</h3><p>Find classrooms, labs, and departments quickly.</p></article>
+        <article class="card"><h3>Faculty</h3><p>Locate cabins and meeting rooms with minimal effort.</p></article>
+        <article class="card"><h3>Visitors</h3><p>Get turn-by-turn indoor guidance without prior familiarity.</p></article>
+        <article class="card"><h3>Admin</h3><p>Manage maps, routers, and route graph definitions.</p></article>
+      </div>
+    </section>
+
+    <section id="features" class="section section-alt">
+      <h2>Core Features</h2>
+      <div class="grid two-col">
+        <ul>
+          <li>Wi-Fi router-based zone detection</li>
+          <li>Shortest path routing with Dijkstra algorithm</li>
+          <li>Multi-floor and multi-building support</li>
+          <li>Live location updates every 3–5 seconds</li>
+        </ul>
+        <ul>
+          <li>Blue path route visualization</li>
+          <li>Accessibility mode</li>
+          <li>Emergency exit routing</li>
+          <li>QR fallback for backup positioning</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="demo" class="section">
+      <h2>Interactive Indoor Route Demo</h2>
+      <p>Simulate source/destination selection and see a shortest route over a sample floor graph.</p>
+      <div class="controls">
+        <label>Current Node
+          <select id="source"></select>
+        </label>
+        <label>Destination Node
+          <select id="destination"></select>
+        </label>
+        <button id="routeBtn" class="btn">Calculate Route</button>
+        <button id="wifiBtn" class="btn secondary">Simulate Wi-Fi Scan</button>
+      </div>
+      <div class="panel">
+        <p><strong>Detected Wi-Fi Zone:</strong> <span id="wifiZone">Not scanned</span></p>
+        <p><strong>Route:</strong> <span id="routeResult">Select nodes and click Calculate Route.</span></p>
+        <p><strong>Total Distance:</strong> <span id="distanceResult">-</span></p>
+      </div>
+      <div class="map-wrap">
+        <svg id="floorMap" viewBox="0 0 600 300" aria-label="Floor Map"></svg>
+      </div>
+    </section>
+
+    <section id="admin" class="section section-alt">
+      <h2>Admin Dashboard (Mock)</h2>
+      <div class="cards">
+        <article class="card"><h3>Building Maps</h3><p>Upload floor plans and align node coordinates.</p></article>
+        <article class="card"><h3>Router Registry</h3><p>Map MAC addresses to floor nodes and zones.</p></article>
+        <article class="card"><h3>Connections</h3><p>Define corridor links and stair/lift transitions.</p></article>
+        <article class="card"><h3>Usage Insights</h3><p>Track route requests and popular destinations.</p></article>
+      </div>
+    </section>
+
+    <section id="architecture" class="section">
+      <h2>System Architecture</h2>
+      <pre>
+Mobile App
+  ↓
+Wi-Fi Scanner
+  ↓
+Backend (Spring Boot API)
+  ↓
+Routing Engine (Dijkstra)
+  ↓
+PostgreSQL Database
+  ↓
+Admin Dashboard
+      </pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Smart Indoor Navigation System • Campus Demo Website</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
